@@ -1,0 +1,24 @@
+CREATE DATABASE conta_banco
+
+use lanhouse
+
+CREATE TABLE banco(
+
+id VARCHAR(20) ,
+local VARCHAR(20),
+agencia INTEGER,
+conta VARCHAR(10),
+banco VARCHAR(10),
+limite FLOAT
+
+);
+
+CREATE TABLE cadastro(
+
+cpf BIGINT,
+nome VARCHAR(30),
+salario FLOAT,
+endereco VARCHAR(70),
+data VARCHAR(10)
+
+);
