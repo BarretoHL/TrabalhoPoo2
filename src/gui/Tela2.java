@@ -32,10 +32,7 @@ public class Tela2 extends JFrame{
     public JTextField txtCPF, txtNome, txtSalario, txtEndereco, txtData;
     public JButton btnEnviar2;
     public JButton btnPage1;
-    
-    
-    
-    
+     
     
     public Tela2() throws ParseException{
         

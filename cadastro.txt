@@ -1,5 +1,5 @@
-cpf : 16687917730
-nome : Lucas Barreto da Cunha
-salario : 1500
-endereco : Rua Lúcio Mendonça, LT.04 QD.11 - Raul Veiga, São Gonçalo - RJ
-data : 07/04/2023
+cpf : 
+nome : 
+salario : 
+endereco : 
+data : 

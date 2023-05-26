@@ -17,6 +17,21 @@ import java.sql.SQLException;
 public class BDConnection {
   
     
+    public static void insereLogin(String login, String senha) throws SQLException, ClassNotFoundException{
+        Class.forName("com.mysql.jdbc.Driver");
+        String urlJDBC = "jdbc:mysql://localhost:3306/conta_banco";
+        Connection conexao = (Connection) DriverManager.getConnection(urlJDBC,
+                                                        "root", 
+                                                        "");
+       
+        Statement comando = (Statement) conexao.createStatement();
+        
+            comando.execute("INSERT INTO banco (LOGIN, SENHA)VALUES" + 
+                    "('"+login+"','"+senha+"')");
+        
+        conexao.close();
+
+    }
     public static void insereUsuario(String id, String local, String agencia, String conta, String banco, String limite) throws SQLException, ClassNotFoundException{
         Class.forName("com.mysql.jdbc.Driver");
         String urlJDBC = "jdbc:mysql://localhost:3306/conta_banco";

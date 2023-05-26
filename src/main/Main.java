@@ -4,7 +4,7 @@
  */
 package main;
 
-import gui.TelaInicial;
+import gui.TelaLogin;
 import java.text.ParseException;
 
 /**
@@ -18,7 +18,7 @@ public class Main {
      */
     public static void main(String[] args) throws ParseException {
        
-        new TelaInicial();
+        new TelaLogin();
     }    
  
     
