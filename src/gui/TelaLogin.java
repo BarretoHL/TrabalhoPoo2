@@ -28,6 +28,7 @@ public class TelaLogin extends JFrame{
     public JTextField txtLogin, txtSenha;
     public JButton btnEnviar2;
     public JButton btnCadastrar;
+    public JButton btnOpcoes;
     
     
     public TelaLogin() throws ParseException{
@@ -42,6 +43,7 @@ public class TelaLogin extends JFrame{
         txtSenha = new JTextField();
         btnEnviar2 = new JButton("Acessar");
         btnCadastrar = new JButton("Cadastrar");
+        btnOpcoes = new JButton("Mais opções");
         
         btnEnviar2.addActionListener(new ActionListener() {
             @Override
@@ -54,7 +56,18 @@ public class TelaLogin extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    cliqueTela2();
+                    cliqueTelaInicial();
+                } catch (ParseException ex) {
+                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+       });
+       
+       btnOpcoes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    cliqueOpcoesCadastro();
                 } catch (ParseException ex) {
                     Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -68,6 +81,8 @@ public class TelaLogin extends JFrame{
         txtSenha.setBounds(120, 110, 200, 25);
         btnEnviar2.setBounds(150, 170, 100, 40);
         btnCadastrar.setBounds(150, 220, 100, 40);
+        btnOpcoes.setBounds(150, 270, 125, 40);
+
 
         getContentPane().add(lblLogin);
         getContentPane().add(txtLogin);
@@ -75,6 +90,7 @@ public class TelaLogin extends JFrame{
         getContentPane().add(txtSenha);
         getContentPane().add(btnEnviar2);
         getContentPane().add(btnCadastrar);
+        getContentPane().add(btnOpcoes);
         
         //Especificações da Tela
         setSize(400, 400);
@@ -106,8 +122,13 @@ public class TelaLogin extends JFrame{
         }
     }
     
-    private void cliqueTela2() throws ParseException{
+    private void cliqueTelaInicial() throws ParseException{
     this.dispose();
     TelaInicial TelaInicial= new TelaInicial();
+    }
+    
+    private void cliqueOpcoesCadastro() throws ParseException{
+    this.dispose();
+    OpcoesCadastro OpcoesCadastro= new OpcoesCadastro();
     }
 }

@@ -93,7 +93,7 @@ public class TelaInicial extends JFrame{
         cmbLimite.setBounds(120,260,200,25);
         btnEnviar.setBounds(220, 300, 100, 40);
         btnPage2.setBounds(80, 300, 100, 40);
-
+        
         getContentPane().add(lblID_Banco);
         getContentPane().add(cmbID_Banco);
         getContentPane().add(lblLocal);

@@ -1,6 +1,19 @@
-CREATE DATABASE conta_banco
+CREATE DATABASE conta_banco;
 
-use lanhouse
+use conta_banco;
+
+CREATE TABLE login(
+
+cpf BIGINT,
+senha VARCHAR(20)
+
+);
+
+ALTER TABLE login ADD INDEX(cpf);
+
+ALTER TABLE login
+Add FOREIGN KEY (cpf) REFERENCES
+cadastro(cpf);
 
 CREATE TABLE banco(
 
@@ -13,9 +26,10 @@ limite FLOAT
 
 );
 
+
 CREATE TABLE cadastro(
 
-cpf BIGINT,
+cpf BIGINT PRIMARY KEY,
 nome VARCHAR(30),
 salario FLOAT,
 endereco VARCHAR(70),

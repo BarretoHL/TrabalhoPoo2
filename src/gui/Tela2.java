@@ -56,17 +56,23 @@ public class Tela2 extends JFrame{
         btnEnviar2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+               try {
+                    cliqueTelaLogin();
+                } catch (ParseException ex) {
+                    Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 cliqueBtnEnviar();
             }
+            
         });
         
        btnPage1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    cliqueTela2();
+                    cliqueTelaInicial();
                 } catch (ParseException ex) {
-                    Logger.getLogger(Tela2.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
        });
@@ -136,7 +142,12 @@ public class Tela2 extends JFrame{
         }
     }
     
-    private void cliqueTela2() throws ParseException{
+    private void cliqueTelaLogin() throws ParseException{
+    this.dispose();
+    TelaLogin TelaLogin= new TelaLogin();
+    }
+    
+    private void cliqueTelaInicial() throws ParseException{
     this.dispose();
     TelaInicial TelaInicial= new TelaInicial();
     }
