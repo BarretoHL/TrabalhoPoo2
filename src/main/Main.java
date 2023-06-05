@@ -4,6 +4,7 @@
  */
 package main;
 
+import gui.BDConnection;
 import gui.TelaLogin;
 import java.text.ParseException;
 
@@ -19,6 +20,8 @@ public class Main {
     public static void main(String[] args) throws ParseException {
        
         new TelaLogin();
+        
+        BDConnection.getInstance().conectar();
     }    
  
     

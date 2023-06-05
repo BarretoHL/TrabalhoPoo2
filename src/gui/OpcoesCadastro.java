@@ -27,6 +27,9 @@ import javax.swing.text.MaskFormatter;
  */
 public class OpcoesCadastro extends JFrame {
     
+    public JButton btnModificaCadastro;
+    public JButton btnDeletaCadastro;
+    public JButton btnListaCadastro;
     public JButton btnModificaBanco;
     public JButton btnDeletaBanco;
     public JButton btnListaBanco;
@@ -38,26 +41,62 @@ public class OpcoesCadastro extends JFrame {
         
         //4°passo
         
+        btnModificaCadastro = new JButton("Modificar Cadastro");
+        btnDeletaCadastro= new JButton("Deletar Cadastro");
+        btnListaCadastro = new JButton("Listar Cadastros");
         btnModificaBanco = new JButton("Modificar Cadastro");
         btnDeletaBanco = new JButton("Deletar Cadastro");
         btnListaBanco = new JButton("Listar Cadastros");
         
-        btnModificaBanco.addActionListener(new ActionListener() {
+        btnModificaCadastro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    cliqueTelaModifica();
+                    cliqueTelaModificaCadastro();
                 } catch (ParseException ex) {
                     Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }                                                                           
         });
         
+       btnDeletaCadastro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    cliqueTelaDeletaCadastro();
+                } catch (ParseException ex) {
+                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+       });
+       
+       btnListaCadastro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    cliqueTelaListaCadastro();
+                } catch (ParseException ex) {
+                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+       });
+       
+       btnModificaBanco.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    cliqueTelaListaBanco();
+                } catch (ParseException ex) {
+                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+       });
+       
        btnDeletaBanco.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    cliqueTelaDeleta();
+                    cliqueTelaListaBanco();
                 } catch (ParseException ex) {
                     Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -68,18 +107,24 @@ public class OpcoesCadastro extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    cliqueTelaLista();
+                    cliqueTelaListaBanco();
                 } catch (ParseException ex) {
                     Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
        });
         
-        btnModificaBanco.setBounds(100, 60, 200, 25);
-        btnDeletaBanco.setBounds(100, 120, 200, 25);
-        btnListaBanco.setBounds(100, 180, 200, 25);
+        btnModificaCadastro.setBounds(100, 60, 200, 25);
+        btnDeletaCadastro.setBounds(100, 100, 200, 25);
+        btnListaCadastro.setBounds(100, 140, 200, 25);
+        btnModificaBanco.setBounds(100, 200, 200, 25);
+        btnDeletaBanco.setBounds(100, 240, 200, 25);
+        btnListaBanco.setBounds(100, 280, 200, 25);
         
         
+        getContentPane().add(btnModificaCadastro);
+        getContentPane().add(btnDeletaCadastro);
+        getContentPane().add(btnListaCadastro);
         getContentPane().add(btnModificaBanco);
         getContentPane().add(btnDeletaBanco);
         getContentPane().add(btnListaBanco);
@@ -89,17 +134,28 @@ public class OpcoesCadastro extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-        private void cliqueTelaModifica() throws ParseException{
+        private void cliqueTelaModificaCadastro() throws ParseException{
         this.dispose();
         ModificaBanco ModificaBanco= new ModificaBanco();
     }
-        private void cliqueTelaDeleta() throws ParseException{
+        private void cliqueTelaDeletaCadastro() throws ParseException{
         this.dispose();
         ModificaBanco ModificaBanco= new ModificaBanco();
     }
-        private void cliqueTelaLista() throws ParseException{
+        private void cliqueTelaListaCadastro() throws ParseException{
         this.dispose();
         ModificaBanco ModificaBanco= new ModificaBanco();
     }
-    
-}
+        private void cliqueTelaModificaBanco() throws ParseException{
+        this.dispose();
+        ModificaBanco ModificaBanco= new ModificaBanco();
+    }
+    private void cliqueTelaDeletaBanco() throws ParseException{
+        this.dispose();
+        ModificaBanco ModificaBanco= new ModificaBanco();
+    }
+    private void cliqueTelaListaBanco() throws ParseException{
+        this.dispose();
+        ModificaBanco ModificaBanco= new ModificaBanco();
+    }
+}   

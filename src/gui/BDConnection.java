@@ -16,13 +16,14 @@ import java.sql.SQLException;
  */
 public class BDConnection {
   
+    private static BDConnection instancia;
     
     public static void insereLogin(String login, String senha) throws SQLException, ClassNotFoundException{
         Class.forName("com.mysql.jdbc.Driver");
         String urlJDBC = "jdbc:mysql://localhost:3306/conta_banco";
         Connection conexao = (Connection) DriverManager.getConnection(urlJDBC,
                                                         "root", 
-                                                        "");
+                                                        "1511");
        
         Statement comando = (Statement) conexao.createStatement();
         
@@ -37,7 +38,7 @@ public class BDConnection {
         String urlJDBC = "jdbc:mysql://localhost:3306/conta_banco";
         Connection conexao = (Connection) DriverManager.getConnection(urlJDBC,
                                                         "root", 
-                                                        "");
+                                                        "1511");
        
         Statement comando = (Statement) conexao.createStatement();
         
@@ -53,7 +54,7 @@ public class BDConnection {
         String urlJDBC = "jdbc:mysql://localhost:3306/conta_banco";
         Connection conexao = (Connection) DriverManager.getConnection(urlJDBC,
                                                         "root", 
-                                                        "");
+                                                        "1511");
        
         Statement comando = (Statement) conexao.createStatement();
         
@@ -62,5 +63,23 @@ public class BDConnection {
         
         conexao.close();
 
+    }
+    
+    public static synchronized BDConnection getInstance(){
+        
+        if(instancia == null){
+            instancia = new BDConnection();
+        }
+        return instancia;
+    } 
+    
+    public void conectar(){
+        
+        System.out.println("conectei");
+    }
+    
+    public void desconectar(){
+        
+        System.out.println("desconectei");
     }
 }
