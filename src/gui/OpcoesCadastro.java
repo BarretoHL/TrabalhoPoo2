@@ -4,6 +4,7 @@
  */
 package gui;
 
+import BDConnection.OpcoesBanco;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,9 +45,9 @@ public class OpcoesCadastro extends JFrame {
         btnModificaCadastro = new JButton("Modificar Cadastro");
         btnDeletaCadastro= new JButton("Deletar Cadastro");
         btnListaCadastro = new JButton("Listar Cadastros");
-        btnModificaBanco = new JButton("Modificar Cadastro");
-        btnDeletaBanco = new JButton("Deletar Cadastro");
-        btnListaBanco = new JButton("Listar Cadastros");
+        btnModificaBanco = new JButton("Modificar Banco");
+        btnDeletaBanco = new JButton("Deletar Banco");
+        btnListaBanco = new JButton("Listar Banco");
         
         btnModificaCadastro.addActionListener(new ActionListener() {
             @Override
@@ -54,7 +55,7 @@ public class OpcoesCadastro extends JFrame {
                 try {
                     cliqueTelaModificaCadastro();
                 } catch (ParseException ex) {
-                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CadastroBanco.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }                                                                           
         });
@@ -65,7 +66,7 @@ public class OpcoesCadastro extends JFrame {
                 try {
                     cliqueTelaDeletaCadastro();
                 } catch (ParseException ex) {
-                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CadastroBanco.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
        });
@@ -76,7 +77,7 @@ public class OpcoesCadastro extends JFrame {
                 try {
                     cliqueTelaListaCadastro();
                 } catch (ParseException ex) {
-                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CadastroBanco.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
        });
@@ -85,9 +86,9 @@ public class OpcoesCadastro extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    cliqueTelaListaBanco();
+                    cliqueTelaModificaBanco();
                 } catch (ParseException ex) {
-                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CadastroBanco.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
        });
@@ -96,9 +97,9 @@ public class OpcoesCadastro extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    cliqueTelaListaBanco();
+                    cliqueTelaDeletaBanco();
                 } catch (ParseException ex) {
-                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CadastroBanco.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
        });
@@ -109,7 +110,7 @@ public class OpcoesCadastro extends JFrame {
                 try {
                     cliqueTelaListaBanco();
                 } catch (ParseException ex) {
-                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CadastroBanco.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
        });
@@ -131,31 +132,32 @@ public class OpcoesCadastro extends JFrame {
         
         setSize(400, 400);
         setTitle("Mais Opções");
+        setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
         private void cliqueTelaModificaCadastro() throws ParseException{
         this.dispose();
-        ModificaBanco ModificaBanco= new ModificaBanco();
+        //ModificaBanco ModificaBanco= new ModificaBanco();
     }
         private void cliqueTelaDeletaCadastro() throws ParseException{
         this.dispose();
-        ModificaBanco ModificaBanco= new ModificaBanco();
+        //ModificaBanco ModificaBanco= new ModificaBanco();
     }
         private void cliqueTelaListaCadastro() throws ParseException{
         this.dispose();
-        ModificaBanco ModificaBanco= new ModificaBanco();
+        //ModificaBanco ModificaBanco= new ModificaBanco();
     }
         private void cliqueTelaModificaBanco() throws ParseException{
         this.dispose();
-        ModificaBanco ModificaBanco= new ModificaBanco();
+        OpcoesBanco OpcoesBanco= new OpcoesBanco();
     }
-    private void cliqueTelaDeletaBanco() throws ParseException{
+        private void cliqueTelaDeletaBanco() throws ParseException{
         this.dispose();
-        ModificaBanco ModificaBanco= new ModificaBanco();
+        //ModificaBanco ModificaBanco= new ModificaBanco();
     }
-    private void cliqueTelaListaBanco() throws ParseException{
+        private void cliqueTelaListaBanco() throws ParseException{
         this.dispose();
-        ModificaBanco ModificaBanco= new ModificaBanco();
+        //ModificaBanco ModificaBanco= new ModificaBanco();
     }
 }   

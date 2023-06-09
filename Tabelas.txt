@@ -4,7 +4,7 @@ use conta_banco;
 
 CREATE TABLE login(
 
-cpf BIGINT,
+nome VARCHAR (50),
 senha VARCHAR(20)
 
 );
@@ -29,7 +29,7 @@ limite FLOAT
 
 CREATE TABLE cadastro(
 
-cpf BIGINT PRIMARY KEY,
+cpf BIGINT,
 nome VARCHAR(30),
 salario FLOAT,
 endereco VARCHAR(70),

@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/BARRETO/Desktop/TelaInicial/src/gui/ModificaBanco.java</file>
-            <file>file:/C:/Users/BARRETO/Desktop/TelaInicial/src/gui/Tela2.java</file>
-            <file>file:/C:/Users/BARRETO/Desktop/TelaInicial/src/gui/TelaLogin.java</file>
-            <file>file:/C:/Users/BARRETO/Desktop/TelaInicial/src/gui/TelaInicial.java</file>
+            <file>file:/C:/Users/BARRETO/Desktop/TelaInicial/src/BDConnection/OpcoesCliente.java</file>
+            <file>file:/C:/Users/BARRETO/Desktop/TelaInicial/src/gui/Login/TelaLogin.java</file>
+            <file>file:/C:/Users/BARRETO/Desktop/TelaInicial/src/BDConnection/Login.java</file>
+            <file>file:/C:/Users/BARRETO/Desktop/TelaInicial/src/gui/Login/CadastroLogin.java</file>
+            <file>file:/C:/Users/BARRETO/Desktop/TelaInicial/src/BDConnection/BDConnection.java</file>
+            <file>file:/C:/Users/BARRETO/Desktop/TelaInicial/src/gui/Banco/ModificaBanco.java</file>
+            <file>file:/C:/Users/BARRETO/Desktop/TelaInicial/src/BDConnection/OpcoesBanco.java</file>
+            <file>file:/C:/Users/BARRETO/Desktop/TelaInicial/src/main/Main.java</file>
             <file>file:/C:/Users/BARRETO/Desktop/TelaInicial/src/gui/OpcoesCadastro.java</file>
         </group>
     </open-files>

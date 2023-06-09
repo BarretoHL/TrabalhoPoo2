@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gui;
+import gui.Login.TelaLogin;
+import BDConnection.BDConnection;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,7 +27,7 @@ import javax.swing.text.MaskFormatter;
  * 
  *  1° passo
  */
-public class Tela2 extends JFrame{
+public class CadastroCliente extends JFrame{
     
     //2°passo
     public JLabel lblCpf, lblNome, lblSalario, lblEndereco, lblData;
@@ -34,7 +36,7 @@ public class Tela2 extends JFrame{
     public JButton btnPage1;
      
     
-    public Tela2() throws ParseException{
+    public CadastroCliente() throws ParseException{
         
         //3°passo
         setLayout(null);
@@ -72,7 +74,7 @@ public class Tela2 extends JFrame{
                 try {
                     cliqueTelaInicial();
                 } catch (ParseException ex) {
-                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CadastroBanco.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
        });
@@ -107,6 +109,7 @@ public class Tela2 extends JFrame{
         //Especificações da Tela
         setSize(400, 400);
         setTitle("Cadastro");
+        setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -149,6 +152,6 @@ public class Tela2 extends JFrame{
     
     private void cliqueTelaInicial() throws ParseException{
     this.dispose();
-    TelaInicial TelaInicial= new TelaInicial();
+    CadastroBanco TelaInicial= new CadastroBanco();
     }
 }

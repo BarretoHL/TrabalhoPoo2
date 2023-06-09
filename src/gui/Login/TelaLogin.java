@@ -1,6 +1,10 @@
 
-package gui;
+package gui.Login;
 
+import BDConnection.BDConnection;
+import BDConnection.Login;
+import gui.CadastroBanco;
+import gui.OpcoesCadastro;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +30,7 @@ public class TelaLogin extends JFrame{
     //2°passo
     public JLabel lblLogin, lblSenha, lblCadastrar;
     public JTextField txtLogin, txtSenha;
-    public JButton btnEnviar2;
+    public JButton btnAcessar;
     public JButton btnCadastrar;
     public JButton btnOpcoes;
     
@@ -41,14 +45,18 @@ public class TelaLogin extends JFrame{
         txtLogin = new JTextField();
         lblSenha = new JLabel("Senha:");
         txtSenha = new JTextField();
-        btnEnviar2 = new JButton("Acessar");
+        btnAcessar = new JButton("Logar");
         btnCadastrar = new JButton("Cadastrar");
         btnOpcoes = new JButton("Mais opções");
         
-        btnEnviar2.addActionListener(new ActionListener() {
+        btnAcessar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cliqueBtnEnviar();
+                try {
+                    logar();
+                } catch (ParseException ex) {
+                    Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         
@@ -56,9 +64,9 @@ public class TelaLogin extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    cliqueTelaInicial();
+                    CadastroLogin();
                 } catch (ParseException ex) {
-                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CadastroLogin.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
        });
@@ -69,7 +77,7 @@ public class TelaLogin extends JFrame{
                 try {
                     cliqueOpcoesCadastro();
                 } catch (ParseException ex) {
-                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CadastroLogin.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
        });
@@ -79,7 +87,7 @@ public class TelaLogin extends JFrame{
         txtLogin.setBounds(120, 60, 200, 25);
         lblSenha.setBounds(10, 110, 200, 25);
         txtSenha.setBounds(120, 110, 200, 25);
-        btnEnviar2.setBounds(150, 170, 100, 40);
+        btnAcessar.setBounds(150, 170, 100, 40);
         btnCadastrar.setBounds(150, 220, 100, 40);
         btnOpcoes.setBounds(150, 270, 125, 40);
 
@@ -88,43 +96,38 @@ public class TelaLogin extends JFrame{
         getContentPane().add(txtLogin);
         getContentPane().add(lblSenha);
         getContentPane().add(txtSenha);
-        getContentPane().add(btnEnviar2);
+        getContentPane().add(btnAcessar);
         getContentPane().add(btnCadastrar);
         getContentPane().add(btnOpcoes);
         
         //Especificações da Tela
         setSize(400, 400);
         setTitle("Tela de Login");
+        setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
    
     
-    private void cliqueBtnEnviar(){
-        String login = txtLogin.getText(),
-               senha = txtSenha.getText();
+    private synchronized void logar() throws ParseException{
+       String nome = txtLogin.getText();
+        String senha = txtSenha.getText();
               
         
-        System.out.println("login : " + login);
-        System.out.println("senha : " + senha);
-        
-        try(PrintWriter pw = new PrintWriter(new File("login.txt"))){
-            pw.println("login : " + login);
-            pw.println("senha : " + senha);
-        }catch(FileNotFoundException e){
-            System.out.println("Arquivo não existe");
-        }
-        try {
-             BDConnection.insereLogin(login, senha);
-        } catch (Exception e) {
-            System.out.println(e);
+       VerificaAcesso VerificaAcesso = new VerificaAcesso(nome, senha);
+
+       
+        if (VerificaAcesso.Acessa(nome, senha) == true) {
+            this.dispose();
+            CadastroBanco CadastroBanco = new CadastroBanco();
+
         }
     }
     
-    private void cliqueTelaInicial() throws ParseException{
+    private void CadastroLogin() throws ParseException{
     this.dispose();
-    TelaInicial TelaInicial= new TelaInicial();
+    CadastroLogin CadastroLogin= new CadastroLogin();
     }
     
     private void cliqueOpcoesCadastro() throws ParseException{

@@ -4,8 +4,8 @@
  */
 package main;
 
-import gui.BDConnection;
-import gui.TelaLogin;
+import BDConnection.BDConnection;
+import gui.Login.TelaLogin;
 import java.text.ParseException;
 
 /**
@@ -18,10 +18,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ParseException {
-       
-        new TelaLogin();
         
-        BDConnection.getInstance().conectar();
+        new TelaLogin();
+       
     }    
  
     

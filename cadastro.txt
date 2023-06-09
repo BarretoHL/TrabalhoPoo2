@@ -1,5 +1,5 @@
-cpf : 16687917730
-nome : Lucas
-salario : 1300,00
-endereco : Lúcio Mendonça
-data : 05/06/23
+cpf : 
+nome : 
+salario : 
+endereco : 
+data : 

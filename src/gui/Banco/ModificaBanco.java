@@ -2,36 +2,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gui;
-import java.awt.BorderLayout;
+package gui.Banco;
+
+import BDConnection.BDConnection;
+import BDConnection.OpcoesBanco;
+import gui.OpcoesCadastro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.*;
-import javax.swing.text.MaskFormatter;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
- * @author professores
- * 
- *  1° passo
+ * @author BARRETO
  */
-public class TelaInicial extends JFrame{
+public class ModificaBanco extends JFrame {
     
-    //2°passo
     public JLabel lblID_Banco,lblLocal, lblAgencia, lblTipo_Conta, lblTipo_Banco,lblLimite;
     public JComboBox cmbID_Banco, cmbTipo_Conta, cmbTipo_Banco, cmbLimite;
     public JTextField txtLocal, txtAgencia;
-    public JButton btnEnviar;
+    public JButton btnAtualizar;
     public JButton btnPage2;
     
     private String[] idBanco = {"1- Santander", "2- Itaú", "3- Banco do Brasil", "4- Nubank", "5- C6Bank"};
@@ -39,7 +38,7 @@ public class TelaInicial extends JFrame{
     private String[] tipoBanco = {"Físico", "Digital"};
     private String[] limite = {"1000", "1500","2000","2500","3000"};
     
-    public TelaInicial() throws ParseException{
+    public ModificaBanco() throws ParseException{
         
         //3°passo
         setLayout(null);
@@ -57,27 +56,8 @@ public class TelaInicial extends JFrame{
         cmbTipo_Banco = new JComboBox(tipoBanco);
         lblLimite = new JLabel("Limite desejado");
         cmbLimite = new JComboBox(limite);
-        btnEnviar = new JButton("Enviar");
+        btnAtualizar = new JButton("Atualizar");
         btnPage2 = new JButton("Pessoais");
-        
-        btnEnviar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cliqueBtnEnviar();
-            }
-            
-        });
-        
-        btnPage2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    cliqueTela2();
-                } catch (ParseException ex) {
-                    Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
         
         lblID_Banco.setBounds(10, 10, 200, 25);
         cmbID_Banco.setBounds(120, 10, 200, 25);
@@ -91,7 +71,7 @@ public class TelaInicial extends JFrame{
         cmbTipo_Banco.setBounds(120, 210, 200, 25);
         lblLimite.setBounds(10, 260,200,25);
         cmbLimite.setBounds(120,260,200,25);
-        btnEnviar.setBounds(220, 300, 100, 40);
+        btnAtualizar.setBounds(220, 300, 100, 40);
         btnPage2.setBounds(80, 300, 100, 40);
         
         getContentPane().add(lblID_Banco);
@@ -106,7 +86,7 @@ public class TelaInicial extends JFrame{
         getContentPane().add(cmbTipo_Banco);
         getContentPane().add(lblLimite);
         getContentPane().add(cmbLimite);
-        getContentPane().add(btnEnviar);
+        getContentPane().add(btnAtualizar);
         getContentPane().add(btnPage2);
         
         //Especificações da Tela
@@ -114,11 +94,29 @@ public class TelaInicial extends JFrame{
         setTitle("Banco");
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+    
+      btnAtualizar.addActionListener((ActionEvent e) -> {
+            atualizar();
+            try {
+                voltar();
+            } catch (ParseException ex) {
+                Logger.getLogger(ModificaBanco.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         });
+      
+      btnPage2.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    voltar();
+                } catch (ParseException ex) {
+                    Logger.getLogger(ModificaBanco.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
     }
-    
-   
-    
-    private void cliqueBtnEnviar(){
+    private void atualizar(){
         String id = cmbID_Banco.getSelectedItem().toString(),
                local = txtLocal.getText(),
                agencia = txtAgencia.getText(),
@@ -133,25 +131,13 @@ public class TelaInicial extends JFrame{
         System.out.println("banco : " + banco);
         System.out.println("limite : " + limite);
         
-        try(PrintWriter pw = new PrintWriter(new File("banco.txt"))){
-            pw.println("id : " + id);
-            pw.println("local : " + local);
-            pw.println("agencia : " + agencia);
-            pw.println("conta : " + conta);
-            pw.println("banco : " + banco);
-            pw.println("limite : " + limite);
-        }catch(FileNotFoundException e){
-            System.out.println("Arquivo não existe");
-        }
-        try {
-             BDConnection.insereUsuario(id,local,agencia, conta, banco, limite);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        new OpcoesBanco(id, local, agencia, conta, banco, limite).atualizar();
     }
     
-    private void cliqueTela2() throws ParseException{
-    this.dispose();
-    Tela2 Tela2= new Tela2();
-        }
+   private void voltar() throws ParseException {
+        this.dispose();
+        OpcoesCadastro OpcoesCadastro = new OpcoesCadastro();
     }
+        
+    }
+   
