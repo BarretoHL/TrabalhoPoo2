@@ -18,54 +18,6 @@ import java.sql.SQLException;
  * @author professores
  */
 public class BDConnection {
-  
-    
-    public static void insereLogin(String login, String senha) throws SQLException, ClassNotFoundException{
-        //Class.forName("com.mysql.jdbc.Driver");
-        //String urlJDBC = "jdbc:mysql://localhost:3306/conta_banco";
-        //Connection conexao = (Connection) DriverManager.getConnection(urlJDBC,
-                                                        //"root", 
-                                                        //"1511");
-       
-        //Statement comando = (Statement) conexao.createStatement();
-        
-            //comando.execute("INSERT INTO banco (LOGIN, SENHA)VALUES" + 
-                    //"('"+login+"','"+senha+"')");
-        
-        //conexao.close();
-
-    }
-    public static void insereBanco(String id, String local, String agencia, String conta, String banco, String limite) throws SQLException, ClassNotFoundException{
-        //Class.forName("com.mysql.jdbc.Driver");
-        //String urlJDBC = "jdbc:mysql://localhost:3306/conta_banco";
-        //Connection conexao = (Connection) DriverManager.getConnection(urlJDBC,
-                                                        //"root", 
-                                                        //"1511");
-       
-        //Statement comando = (Statement) conexao.createStatement();
-        
-            //comando.execute("INSERT INTO banco (ID, LOCAL, AGENCIA, CONTA, BANCO, LIMITE)VALUES" + 
-                    //"('"+id+"','"+local+"','"+agencia+"','"+conta+"','"+banco+"','"+limite+"')");
-        
-        //conexao.close();
-
-    }
-    
-    public static void inserePessoais(String cpf, String nome, String salario, String endereco, String data) throws SQLException, ClassNotFoundException{
-        //Class.forName("com.mysql.jdbc.Driver");
-        //String urlJDBC = "jdbc:mysql://localhost:3306/conta_banco";
-        //Connection conexao = (Connection) DriverManager.getConnection(urlJDBC,
-                                                        //"root", 
-                                                        //"1511");
-       
-        //Statement comando = (Statement) conexao.createStatement();
-        
-            //comando.execute("INSERT INTO cadastro (CPF, NOME, SALARIO, ENDERECO, DATA)VALUES" + 
-                    //"('"+cpf+"','"+nome+"','"+salario+"','"+endereco+"','"+data+"')");
-        
-        //conexao.close();
-
-    }
     
     private java.sql.Connection conexao;
     

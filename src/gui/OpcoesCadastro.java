@@ -5,6 +5,10 @@
 package gui;
 
 import BDConnection.OpcoesBanco;
+import gui.Banco.DeletaBanco;
+import gui.Banco.ModificaBanco;
+import gui.Cadastro.DeletaCadastro;
+import gui.Cadastro.ModificaCadastro;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
-
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
  *
@@ -138,11 +142,11 @@ public class OpcoesCadastro extends JFrame {
     }
         private void cliqueTelaModificaCadastro() throws ParseException{
         this.dispose();
-        //ModificaBanco ModificaBanco= new ModificaBanco();
+        ModificaCadastro ModificaCadastro= new ModificaCadastro();
     }
         private void cliqueTelaDeletaCadastro() throws ParseException{
         this.dispose();
-        //ModificaBanco ModificaBanco= new ModificaBanco();
+        DeletaCadastro DeletaCadastro= new DeletaCadastro();
     }
         private void cliqueTelaListaCadastro() throws ParseException{
         this.dispose();
@@ -150,11 +154,11 @@ public class OpcoesCadastro extends JFrame {
     }
         private void cliqueTelaModificaBanco() throws ParseException{
         this.dispose();
-        OpcoesBanco OpcoesBanco= new OpcoesBanco();
+        ModificaBanco ModificaBanco= new ModificaBanco();
     }
         private void cliqueTelaDeletaBanco() throws ParseException{
         this.dispose();
-        //ModificaBanco ModificaBanco= new ModificaBanco();
+        DeletaBanco DeletaBanco= new DeletaBanco();
     }
         private void cliqueTelaListaBanco() throws ParseException{
         this.dispose();

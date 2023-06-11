@@ -5,6 +5,7 @@
 package gui;
 import BDConnection.BDConnection;
 import BDConnection.OpcoesBanco;
+import gui.Login.CadastroLogin;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,11 +36,12 @@ public class CadastroBanco extends JFrame{
     public JTextField txtLocal, txtAgencia;
     public JButton btnEnviar;
     public JButton btnPage2;
+    public JButton btnOpcoes;
     
-    private String[] idBanco = {"1- Santander", "2- Itaú", "3- Banco do Brasil", "4- Nubank", "5- C6Bank"};
-    private String[] tipoConta = {"Salário", "Poupança", "Corrente"};
-    private String[] tipoBanco = {"Físico", "Digital"};
-    private String[] limite = {"1000", "1500","2000","2500","3000"};
+    private final String[] idBanco = {"1- Santander", "2- Itaú", "3- Banco do Brasil", "4- Nubank", "5- C6Bank"};
+    private final String[] tipoConta = {"Salário", "Poupança", "Corrente"};
+    private final String[] tipoBanco = {"Físico", "Digital"};
+    private final String[] limite = {"1000", "1500","2000","2500","3000"};
     
     public CadastroBanco() throws ParseException{
         
@@ -61,6 +63,7 @@ public class CadastroBanco extends JFrame{
         cmbLimite = new JComboBox(limite);
         btnEnviar = new JButton("Enviar");
         btnPage2 = new JButton("Pessoais");
+        btnOpcoes = new JButton("Mais opções");
         
         btnEnviar.addActionListener(new ActionListener() {
             @Override
@@ -81,6 +84,17 @@ public class CadastroBanco extends JFrame{
             }
         });
         
+        btnOpcoes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    cliqueOpcoesCadastro();
+                } catch (ParseException ex) {
+                    Logger.getLogger(CadastroLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+       });
+        
         lblID_Banco.setBounds(10, 10, 200, 25);
         cmbID_Banco.setBounds(120, 10, 200, 25);
         lblLocal.setBounds(10, 60, 200, 25);
@@ -95,6 +109,7 @@ public class CadastroBanco extends JFrame{
         cmbLimite.setBounds(120,260,200,25);
         btnEnviar.setBounds(220, 300, 100, 40);
         btnPage2.setBounds(80, 300, 100, 40);
+        btnOpcoes.setBounds(80, 350, 240, 40);
         
         getContentPane().add(lblID_Banco);
         getContentPane().add(cmbID_Banco);
@@ -110,9 +125,10 @@ public class CadastroBanco extends JFrame{
         getContentPane().add(cmbLimite);
         getContentPane().add(btnEnviar);
         getContentPane().add(btnPage2);
+        getContentPane().add(btnOpcoes);
         
         //Especificações da Tela
-        setSize(400, 400);
+        setSize(400, 450);
         setLocationRelativeTo(null);
         setTitle("Banco");
         setVisible(true);
@@ -148,10 +164,10 @@ public class CadastroBanco extends JFrame{
             System.out.println("Arquivo não existe");
         }
         try {
-             OpcoesBanco.opcoesBanco = new OpcoesBanco(id,local,agencia, conta, banco, limite);
-             OpcoesBanco.inserir();
+             OpcoesBanco opcoesBanco = new OpcoesBanco(id,local,agencia, conta, banco, limite);
+             opcoesBanco.inserir();
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Ocorreu um erro ao executar o evento :" + e);
         }
     }
     
@@ -159,4 +175,9 @@ public class CadastroBanco extends JFrame{
     this.dispose();
     CadastroCliente Tela2= new CadastroCliente();
         }
+    
+    private void cliqueOpcoesCadastro() throws ParseException{
+    this.dispose();
+    OpcoesCadastro OpcoesCadastro= new OpcoesCadastro();
+    }
     }

@@ -18,7 +18,7 @@ cadastro(cpf);
 CREATE TABLE banco(
 
 id VARCHAR(20) ,
-local VARCHAR(20),
+local VARCHAR(50),
 agencia INTEGER,
 conta VARCHAR(10),
 banco VARCHAR(10),
@@ -29,7 +29,7 @@ limite FLOAT
 
 CREATE TABLE cadastro(
 
-cpf BIGINT,
+cpf BIGINT PRIMARY KEY,
 nome VARCHAR(30),
 salario FLOAT,
 endereco VARCHAR(70),

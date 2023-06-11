@@ -11,7 +11,7 @@ package BDConnection;
 public abstract class BDObjeto {
     
     public  void inserir(){};
-    public  void atualizar(){};
+    public  void modificar(){};
     public  void deletar(){};
     public  void deletarTodos(){};
     public  void mostrar(){};

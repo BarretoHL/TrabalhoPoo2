@@ -46,7 +46,7 @@ public class OpcoesBanco extends BDObjeto{
     public void inserir() {
 
         try {
-            String query = "INSERT INTO banco VALUES (?,?,?,?,?)";
+            String query = "INSERT INTO banco VALUES (?,?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(query);
 
             pst.setString(1, id);
@@ -67,10 +67,10 @@ public class OpcoesBanco extends BDObjeto{
     }
 
     @Override
-    public void atualizar() {
+    public void modificar() {
         try {
 
-            String query = "UPDATE banco SET local_banco = ?, agencia_banco = ?, conta_banco= ?, banco_banco = ?, limite_banco = ? WHERE id_banco= ?" ;
+            String query = "UPDATE banco SET local = ?, agencia = ?, conta= ?, banco = ?, limite = ? WHERE id= ?" ;
             PreparedStatement pst = con.prepareStatement(query);
             
             pst.setString(1, id);
@@ -95,7 +95,7 @@ public class OpcoesBanco extends BDObjeto{
 
     public void deletar(String nome) {
         try {
-            String query = "DELETE FROM banco WHERE id_banco = ?";
+            String query = "DELETE FROM banco WHERE id = ?";
             PreparedStatement pst = con.prepareStatement(query);
 
             pst.setString(1, id);
@@ -135,12 +135,12 @@ public class OpcoesBanco extends BDObjeto{
             System.out.println("Resultado da pesquisa");
 
             while (rst.next()) {
-                String id = rst.getString("id_banco");
-                String local = rst.getString("local_banco");
-                String agencia = rst.getString("agencia_banco");
-                String conta = rst.getString("conta_banco");
-                String banco = rst.getString("banco_banco");
-                String limite = rst.getString("limite_banco");
+                String id = rst.getString("id");
+                String local = rst.getString("local");
+                String agencia = rst.getString("agencia");
+                String conta = rst.getString("conta");
+                String banco = rst.getString("banco");
+                String limite = rst.getString("limite");
                 modelo.addRow(new Object[] { id,local,agencia,conta,banco,limite});
             }
         } catch (SQLException ex) {

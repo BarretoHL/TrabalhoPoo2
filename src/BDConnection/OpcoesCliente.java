@@ -44,7 +44,7 @@ public class OpcoesCliente extends BDObjeto{
     public void inserir() {
 
         try {
-            String query = "INSERT INTO banco VALUES (?,?,?,?,?)";
+            String query = "INSERT INTO cadastro VALUES (?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(query);
 
             pst.setString(1, cpf);
@@ -64,10 +64,10 @@ public class OpcoesCliente extends BDObjeto{
     }
 
     @Override
-    public void atualizar() {
+    public void modificar() {
         try {
 
-            String query = "UPDATE banco SET cpf_cliente = ?, salario_cliente = ?, endereco_cliente= ?, data_cliente = ? WHERE id_banco= ?" ;
+            String query = "UPDATE cadastro SET nome = ?, salario = ?, endereco = ?, data = ? WHERE cpf = ?" ;
             PreparedStatement pst = con.prepareStatement(query);
             
             pst.setString(1, cpf);
@@ -89,12 +89,12 @@ public class OpcoesCliente extends BDObjeto{
         }
     }
 
-    public void deletar(String nome) {
+    public void deletar(String cpf) {
         try {
-            String query = "DELETE FROM banco WHERE id_banco = ?";
+            String query = "DELETE FROM cadastro WHERE cpf = ?";
             PreparedStatement pst = con.prepareStatement(query);
 
-            pst.setString(1, nome);
+            pst.setString(1, cpf);
 
             int resultado = pst.executeUpdate();
 
@@ -113,7 +113,7 @@ public class OpcoesCliente extends BDObjeto{
         
         JFrame tela = new JFrame();
          
-        tela.setTitle("Bancos cadastrados");
+        tela.setTitle("Clientes cadastrados");
         tela.setSize(500, 300);
         tela.setResizable(false);
         
@@ -131,11 +131,11 @@ public class OpcoesCliente extends BDObjeto{
             System.out.println("Resultado da pesquisa");
 
             while (rst.next()) {
-                String cpf = rst.getString("cpf_cliente");
-                String nome = rst.getString("nome_cliente");
-                String salario = rst.getString("salario_banco");
-                String endereco = rst.getString("endereco_banco");
-                String data = rst.getString("data_banco");
+                String cpf = rst.getString("cpf");
+                String nome = rst.getString("nome");
+                String salario = rst.getString("salario");
+                String endereco = rst.getString("endereco");
+                String data = rst.getString("data");
                 modelo.addRow(new Object[] { cpf,nome,salario,endereco,data,});
             }
         } catch (SQLException ex) {

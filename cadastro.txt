@@ -1,5 +1,5 @@
-cpf : 
-nome : 
-salario : 
-endereco : 
-data : 
+cpf : 11122233300
+nome : Maria Vitória
+salario : 1200
+endereco : Pelópidas
+data : 11

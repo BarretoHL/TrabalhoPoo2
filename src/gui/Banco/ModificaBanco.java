@@ -30,7 +30,7 @@ public class ModificaBanco extends JFrame {
     public JLabel lblID_Banco,lblLocal, lblAgencia, lblTipo_Conta, lblTipo_Banco,lblLimite;
     public JComboBox cmbID_Banco, cmbTipo_Conta, cmbTipo_Banco, cmbLimite;
     public JTextField txtLocal, txtAgencia;
-    public JButton btnAtualizar;
+    public JButton btnModificar;
     public JButton btnPage2;
     
     private String[] idBanco = {"1- Santander", "2- Itaú", "3- Banco do Brasil", "4- Nubank", "5- C6Bank"};
@@ -56,7 +56,7 @@ public class ModificaBanco extends JFrame {
         cmbTipo_Banco = new JComboBox(tipoBanco);
         lblLimite = new JLabel("Limite desejado");
         cmbLimite = new JComboBox(limite);
-        btnAtualizar = new JButton("Atualizar");
+        btnModificar = new JButton("Atualizar");
         btnPage2 = new JButton("Pessoais");
         
         lblID_Banco.setBounds(10, 10, 200, 25);
@@ -71,7 +71,7 @@ public class ModificaBanco extends JFrame {
         cmbTipo_Banco.setBounds(120, 210, 200, 25);
         lblLimite.setBounds(10, 260,200,25);
         cmbLimite.setBounds(120,260,200,25);
-        btnAtualizar.setBounds(220, 300, 100, 40);
+        btnModificar.setBounds(220, 300, 100, 40);
         btnPage2.setBounds(80, 300, 100, 40);
         
         getContentPane().add(lblID_Banco);
@@ -86,7 +86,7 @@ public class ModificaBanco extends JFrame {
         getContentPane().add(cmbTipo_Banco);
         getContentPane().add(lblLimite);
         getContentPane().add(cmbLimite);
-        getContentPane().add(btnAtualizar);
+        getContentPane().add(btnModificar);
         getContentPane().add(btnPage2);
         
         //Especificações da Tela
@@ -96,8 +96,8 @@ public class ModificaBanco extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
     
-      btnAtualizar.addActionListener((ActionEvent e) -> {
-            atualizar();
+      btnModificar.addActionListener((ActionEvent e) -> {
+            modificar();
             try {
                 voltar();
             } catch (ParseException ex) {
@@ -116,7 +116,7 @@ public class ModificaBanco extends JFrame {
             }
         });
     }
-    private void atualizar(){
+    private void modificar(){
         String id = cmbID_Banco.getSelectedItem().toString(),
                local = txtLocal.getText(),
                agencia = txtAgencia.getText(),
@@ -131,7 +131,24 @@ public class ModificaBanco extends JFrame {
         System.out.println("banco : " + banco);
         System.out.println("limite : " + limite);
         
-        new OpcoesBanco(id, local, agencia, conta, banco, limite).atualizar();
+        try(PrintWriter pw = new PrintWriter(new File("banco.txt"))){
+            pw.println("id : " + id);
+            pw.println("local : " + local);
+            pw.println("agencia : " + agencia);
+            pw.println("conta : " + conta);
+            pw.println("banco : " + banco);
+            pw.println("limite : " + limite);
+        }catch(FileNotFoundException e){
+            System.out.println("Arquivo não existe");
+        }
+        try {
+             OpcoesBanco opcoesBanco = new OpcoesBanco(id,local,agencia, conta, banco, limite);
+             opcoesBanco.modificar();
+        } catch (Exception e) {
+            System.out.println("Ocorreu um erro ao executar o evento :" + e);
+        }
+        
+        new OpcoesBanco(id, local, agencia, conta, banco, limite).modificar();
     }
     
    private void voltar() throws ParseException {

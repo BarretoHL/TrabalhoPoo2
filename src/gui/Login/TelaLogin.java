@@ -32,7 +32,6 @@ public class TelaLogin extends JFrame{
     public JTextField txtLogin, txtSenha;
     public JButton btnAcessar;
     public JButton btnCadastrar;
-    public JButton btnOpcoes;
     
     
     public TelaLogin() throws ParseException{
@@ -47,7 +46,6 @@ public class TelaLogin extends JFrame{
         txtSenha = new JTextField();
         btnAcessar = new JButton("Logar");
         btnCadastrar = new JButton("Cadastrar");
-        btnOpcoes = new JButton("Mais opções");
         
         btnAcessar.addActionListener(new ActionListener() {
             @Override
@@ -69,28 +67,14 @@ public class TelaLogin extends JFrame{
                     Logger.getLogger(CadastroLogin.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-       });
-       
-       btnOpcoes.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    cliqueOpcoesCadastro();
-                } catch (ParseException ex) {
-                    Logger.getLogger(CadastroLogin.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-       });
-        
+       });   
         
         lblLogin.setBounds(10, 60, 200, 25);
-        txtLogin.setBounds(120, 60, 200, 25);
+        txtLogin.setBounds(120, 60, 170, 25);
         lblSenha.setBounds(10, 110, 200, 25);
-        txtSenha.setBounds(120, 110, 200, 25);
-        btnAcessar.setBounds(150, 170, 100, 40);
-        btnCadastrar.setBounds(150, 220, 100, 40);
-        btnOpcoes.setBounds(150, 270, 125, 40);
-
+        txtSenha.setBounds(120, 110, 170, 25);
+        btnAcessar.setBounds(80, 170, 115, 40);
+        btnCadastrar.setBounds(205, 170, 115, 40);
 
         getContentPane().add(lblLogin);
         getContentPane().add(txtLogin);
@@ -98,18 +82,16 @@ public class TelaLogin extends JFrame{
         getContentPane().add(txtSenha);
         getContentPane().add(btnAcessar);
         getContentPane().add(btnCadastrar);
-        getContentPane().add(btnOpcoes);
         
         //Especificações da Tela
-        setSize(400, 400);
+        setSize(400, 280);
         setTitle("Tela de Login");
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
-   
-    
+     
     private synchronized void logar() throws ParseException{
        String nome = txtLogin.getText();
         String senha = txtSenha.getText();

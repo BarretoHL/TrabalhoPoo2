@@ -87,7 +87,7 @@ public class Login extends BDObjeto{
     }
 
     @Override
-    public void atualizar() {
+    public void modificar() {
         try {
 
             String query = "UPDATE usuarios SET nome_usuario = ?, senha_usuario = ? WHERE nome_usuario = ?";

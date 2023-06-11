@@ -4,7 +4,8 @@
  */
 package gui;
 import gui.Login.TelaLogin;
-import BDConnection.BDConnection;
+import BDConnection.OpcoesCliente;
+import gui.Login.CadastroLogin;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,6 +35,7 @@ public class CadastroCliente extends JFrame{
     public JTextField txtCPF, txtNome, txtSalario, txtEndereco, txtData;
     public JButton btnEnviar2;
     public JButton btnPage1;
+    public JButton btnOpcoes;
      
     
     public CadastroCliente() throws ParseException{
@@ -54,6 +56,7 @@ public class CadastroCliente extends JFrame{
         txtData = new JTextField();
         btnEnviar2 = new JButton("Enviar");
         btnPage1 = new JButton("Conta");
+        btnOpcoes = new JButton("Mais opções");
         
         btnEnviar2.addActionListener(new ActionListener() {
             @Override
@@ -78,6 +81,17 @@ public class CadastroCliente extends JFrame{
                 }
             }
        });
+       
+       btnOpcoes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    cliqueOpcoesCadastro();
+                } catch (ParseException ex) {
+                    Logger.getLogger(CadastroLogin.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+       });
         
         
         lblCpf.setBounds(10, 10, 200, 25);
@@ -92,6 +106,7 @@ public class CadastroCliente extends JFrame{
         txtData.setBounds(120, 210, 200, 25);
         btnEnviar2.setBounds(220, 250, 100, 40);
         btnPage1.setBounds(80, 250, 100, 40);
+        btnOpcoes.setBounds(80, 300, 240, 40);
 
         getContentPane().add(lblCpf);
         getContentPane().add(txtCPF);
@@ -105,6 +120,7 @@ public class CadastroCliente extends JFrame{
         getContentPane().add(txtData);
         getContentPane().add(btnEnviar2);
         getContentPane().add(btnPage1);
+        getContentPane().add(btnOpcoes);
         
         //Especificações da Tela
         setSize(400, 400);
@@ -139,9 +155,10 @@ public class CadastroCliente extends JFrame{
             System.out.println("Arquivo não existe");
         }
         try {
-             BDConnection.inserePessoais(cpf, nome, salario, endereco, data);
+             OpcoesCliente opcoesCliente = new OpcoesCliente(cpf, nome, salario, endereco, data);
+             opcoesCliente.inserir();
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Ocorreu um erro ao executar o evento :" + e);
         }
     }
     
@@ -153,5 +170,10 @@ public class CadastroCliente extends JFrame{
     private void cliqueTelaInicial() throws ParseException{
     this.dispose();
     CadastroBanco TelaInicial= new CadastroBanco();
+    }
+    
+    private void cliqueOpcoesCadastro() throws ParseException{
+    this.dispose();
+    OpcoesCadastro OpcoesCadastro= new OpcoesCadastro();
     }
 }
