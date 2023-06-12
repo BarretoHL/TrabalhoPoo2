@@ -5,6 +5,7 @@
 package gui;
 
 import BDConnection.OpcoesBanco;
+import BDConnection.OpcoesCliente;
 import gui.Banco.DeletaBanco;
 import gui.Banco.ModificaBanco;
 import gui.Cadastro.DeletaCadastro;
@@ -75,16 +76,13 @@ public class OpcoesCadastro extends JFrame {
             }
        });
        
-       btnListaCadastro.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    cliqueTelaListaCadastro();
-                } catch (ParseException ex) {
-                    Logger.getLogger(CadastroBanco.class.getName()).log(Level.SEVERE, null, ex);
-                }
+       btnListaCadastro.addActionListener((ActionEvent e) -> {
+            try {
+                listaCadastro();
+            } catch (ParseException ex) {
+                Logger.getLogger(OpcoesCadastro.class.getName()).log(Level.SEVERE, null, ex);
             }
-       });
+        });
        
        btnModificaBanco.addActionListener(new ActionListener() {
             @Override
@@ -108,16 +106,13 @@ public class OpcoesCadastro extends JFrame {
             }
        });
        
-       btnListaBanco.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    cliqueTelaListaBanco();
-                } catch (ParseException ex) {
-                    Logger.getLogger(CadastroBanco.class.getName()).log(Level.SEVERE, null, ex);
-                }
+       btnListaBanco.addActionListener((ActionEvent e) -> {
+            try {
+                listaBanco();
+            } catch (ParseException ex) {
+                Logger.getLogger(OpcoesCadastro.class.getName()).log(Level.SEVERE, null, ex);
             }
-       });
+        });
         
         btnModificaCadastro.setBounds(100, 60, 200, 25);
         btnDeletaCadastro.setBounds(100, 100, 200, 25);
@@ -148,9 +143,10 @@ public class OpcoesCadastro extends JFrame {
         this.dispose();
         DeletaCadastro DeletaCadastro= new DeletaCadastro();
     }
-        private void cliqueTelaListaCadastro() throws ParseException{
+        private void listaCadastro() throws ParseException{
         this.dispose();
-        //ModificaBanco ModificaBanco= new ModificaBanco();
+        OpcoesCliente opcoesCliente= new OpcoesCliente();
+        opcoesCliente.mostrar();
     }
         private void cliqueTelaModificaBanco() throws ParseException{
         this.dispose();
@@ -160,8 +156,9 @@ public class OpcoesCadastro extends JFrame {
         this.dispose();
         DeletaBanco DeletaBanco= new DeletaBanco();
     }
-        private void cliqueTelaListaBanco() throws ParseException{
+        private void listaBanco() throws ParseException{
         this.dispose();
-        //ModificaBanco ModificaBanco= new ModificaBanco();
+        OpcoesBanco opcoesbanco= new OpcoesBanco();
+        opcoesbanco.mostrar();
     }
 }   

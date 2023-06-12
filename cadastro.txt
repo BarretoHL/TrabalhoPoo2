@@ -1,5 +1,5 @@
-cpf : 11122233300
-nome : Maria Vitória
-salario : 1200
-endereco : Pelópidas
-data : 11
+cpf : 16687917730
+nome : Lucas Barreto da Cunha
+salario : 1400
+endereco : Rua Lúcio Mendonça
+data : 11/06/2023
