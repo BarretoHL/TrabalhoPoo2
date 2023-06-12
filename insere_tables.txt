@@ -1,0 +1,38 @@
+CREATE DATABASE conta_banco;
+
+use conta_banco;
+
+CREATE TABLE login(
+
+nome VARCHAR (50),
+senha VARCHAR(20)
+
+);
+
+ALTER TABLE login ADD INDEX(cpf);
+
+ALTER TABLE login
+Add FOREIGN KEY (cpf) REFERENCES
+cadastro(cpf);
+
+CREATE TABLE banco(
+
+id VARCHAR(20) ,
+local VARCHAR(50),
+agencia INTEGER,
+conta VARCHAR(10),
+banco VARCHAR(10),
+limite FLOAT
+
+);
+
+
+CREATE TABLE cadastro(
+
+cpf BIGINT PRIMARY KEY,
+nome VARCHAR(30),
+salario FLOAT,
+endereco VARCHAR(70),
+data VARCHAR(10)
+
+);
